@@ -86,6 +86,19 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./hash.txt":
+/*!******************!*\
+  !*** ./hash.txt ***!
+  \******************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("1281b3f905f919a0786d9d5ebd88b2ec6044286e");
+
+/***/ }),
+
 /***/ "./node_modules/dat.gui/build/dat.gui.module.js":
 /*!******************************************************!*\
   !*** ./node_modules/dat.gui/build/dat.gui.module.js ***!
@@ -10341,7 +10354,7 @@ var forEach = function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#version 300 es\r\n  precision highp float;\r\n\r\n  uniform int uRedCoef;\r\n  uniform int uBlueCoef;\r\n  uniform int uGreenCoef;\r\n  uniform float uTime;\r\n  uniform sampler2D uTexture;\r\n  uniform vec4 Area;\r\n  uniform int isTexture;\r\n  uniform int uRed, uGreen, uBlue;\r\n\r\n  out vec4 oColor;\r\n\r\n  vec2 CmplSet( float r, float i )\r\n  {\r\n    vec2 Res;\r\n    Res.x = r;\r\n    Res.y = i;\r\n\r\n    return Res;\r\n  }\r\n\r\n  vec2 CmplAddCmpl( vec2 A, vec2 B )\r\n  {\r\n    return vec2(A.x + B.x, A.y + B.y);\r\n  }\r\n\r\n  vec2 CmplMulCmpl( vec2 A, vec2 B )\r\n  {\r\n    return vec2(A.x * B.x - A.y * B.y, A.x * B.y + A.y * B.x);\r\n  }\r\n\r\n  float CmplLen( vec2 A )\r\n  {\r\n    return A.x * A.x + A.y * A.y;\r\n  }\r\n\r\n  int Mandl( vec2 Z )\r\n  {\r\n    int n = 0;\r\n    vec2 Z0 = Z;\r\n\r\n    while (n < 255 && CmplLen(Z) < 4.)\r\n    {\r\n      Z = CmplAddCmpl(CmplMulCmpl(Z, Z), Z0);\r\n      n++;\r\n    }\r\n    return n;\r\n  }\r\n\r\n  void main(void)\r\n  {\r\n    vec2 Z;\r\n    int color;\r\n\r\n    vec2 xy = Area.xz + gl_FragCoord.xy / 500.0 * (Area.yw - Area.xz);\r\n\r\n    float dist = clamp(length(xy) / 0.5, 0.0, 1.0);\r\n  \r\n    float pi = 3.1415926535;\r\n    float angle = uTime * 50.0;\r\n    float c = cos(pi * angle / 180.0);\r\n    float s = sin(pi * angle / 180.0);\r\n  \r\n    vec2 rxy;\r\n    rxy.x = c * xy.x + s * xy.y;\r\n    rxy.y = -s * xy.x + c * xy.y;\r\n  \r\n    xy = mix(rxy, xy, dist);\r\n    Z = vec2(xy.x, xy.y);\r\n  \r\n    color = Mandl(Z);\r\n    if (isTexture == 1)\r\n    {\r\n      oColor = texture(uTexture, vec2(float(color) / 255., 1. - float(color) / 255.)); \r\n      oColor = vec4(float(uRedCoef) * oColor.x / 255., float(uBlueCoef) * oColor.y / 255., float(uGreenCoef) * oColor.z / 255., 1);\r\n    }\r\n    else\r\n    {\r\n      oColor = vec4(float(color) / 255. * float(uRed) / 255., float(color) / 255. * float(uBlue) / 255., float(color) / 255. * float(uGreen) / 255., 1.);\r\n    }\r\n  }");
+/* harmony default export */ __webpack_exports__["default"] = ("#version 300 es\r\nprecision highp float;\r\n\r\nuniform int uRedCoef;\r\nuniform int uBlueCoef;\r\nuniform int uGreenCoef;\r\nuniform float uTime;\r\nuniform sampler2D uTexture;\r\nuniform vec4 Area;\r\nuniform int isTexture;\r\nuniform int uRed, uGreen, uBlue;\r\n\r\nout vec4 oColor;\r\n\r\nvec2 CmplSet( float r, float i )\r\n{\r\n  vec2 Res;\r\n  Res.x = r;\r\n  Res.y = i;\r\n\r\n  return Res;\r\n}\r\n\r\nvec2 CmplAddCmpl( vec2 A, vec2 B )\r\n{\r\n  return vec2(A.x + B.x, A.y + B.y);\r\n}\r\n\r\nvec2 CmplMulCmpl( vec2 A, vec2 B )\r\n{\r\n  return vec2(A.x * B.x - A.y * B.y, A.x * B.y + A.y * B.x);\r\n}\r\n\r\nfloat CmplLen( vec2 A )\r\n{\r\n  return A.x * A.x + A.y * A.y;\r\n}\r\n\r\nint Mandl( vec2 Z )\r\n{\r\n  int n = 0;\r\n  vec2 Z0 = Z;\r\n\r\n  while (n < 255 && CmplLen(Z) < 4.)\r\n  {\r\n    Z = CmplAddCmpl(CmplMulCmpl(Z, Z), Z0);\r\n    n++;\r\n  }\r\n  return n;\r\n}\r\n\r\nvoid main(void)\r\n{\r\n  vec2 Z;\r\n  int color;\r\n\r\n  vec2 xy = Area.xz + gl_FragCoord.xy / 500.0 * (Area.yw - Area.xz);\r\n\r\n  float dist = clamp(length(xy) / 0.5, 0.0, 1.0);\r\n\r\n  float pi = 3.1415926535;\r\n  float angle = uTime * 50.0;\r\n  float c = cos(pi * angle / 180.0);\r\n  float s = sin(pi * angle / 180.0);\r\n\r\n  vec2 rxy;\r\n  rxy.x = c * xy.x + s * xy.y;\r\n  rxy.y = -s * xy.x + c * xy.y;\r\n\r\n  xy = mix(rxy, xy, dist);\r\n  Z = vec2(xy.x, xy.y);\r\n\r\n  color = Mandl(Z);\r\n  if (isTexture == 1)\r\n  {\r\n    oColor = texture(uTexture, vec2(float(color) / 255., 1. - float(color) / 255.)); \r\n    oColor = vec4(float(uRedCoef) * oColor.x / 255., float(uBlueCoef) * oColor.y / 255., float(uGreenCoef) * oColor.z / 255., 1);\r\n  }\r\n  else\r\n  {\r\n    oColor = vec4(float(color) / 255. * float(uRed) / 255., float(color) / 255. * float(uBlue) / 255., float(color) / 255. * float(uGreen) / 255., 1.);\r\n  }\r\n}");
 
 /***/ }),
 
@@ -10359,9 +10372,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _main_frag__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./main.frag */ "./src/main.frag");
 /* harmony import */ var dat_gui__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! dat.gui */ "./node_modules/dat.gui/build/dat.gui.module.js");
 /* harmony import */ var _texture_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./texture.jpg */ "./src/texture.jpg");
+/* harmony import */ var _hash_txt__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../hash.txt */ "./hash.txt");
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -10608,6 +10623,8 @@ var FractalClass = function FractalClass() {
   }());
 
   _defineProperty(this, "updateCheckersCellWidth", function () {});
+
+  document.getElementById('hash').innerHTML += ' Current Git Hash: ' + _hash_txt__WEBPACK_IMPORTED_MODULE_5__["default"];
 
   var _canvas = document.getElementById("webglCanvas");
 

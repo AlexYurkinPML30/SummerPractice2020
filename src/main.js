@@ -7,6 +7,8 @@ import * as dat from 'dat.gui';
 
 import iText from './texture.jpg';
 
+import gitHash from '../hash.txt';
+
 class FractalClass {
   ColorRed = 0;
   ColorBlue = 0;
@@ -21,6 +23,7 @@ class FractalClass {
   move = false;
 
   constructor() {
+    document.getElementById('hash').innerHTML += ' Current Git Hash: ' + gitHash;
     var canvas = document.getElementById("webglCanvas");
 
     function writeMessage(canvas, message) {
